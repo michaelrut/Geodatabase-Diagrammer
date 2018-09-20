@@ -673,9 +673,14 @@ Public Class FormGDBDiagrammer
                     'Set pMetadata = pObjectClass 'QI
                     'Set pPropSet = pMetadata.metadata
                     vAbstractProp = pPropSet.GetProperty("idinfo/descript/abstract")
-                    sAbstract = CStr(vAbstractProp(0))
+                    If Not vAbstractProp Is Nothing Then
+                        sAbstract = CStr(vAbstractProp(0))
+                    Else
+                        sAbstract = ""
+                    End If
+
                 Else
-                    sAbstract = ""
+                        sAbstract = ""
                 End If
 
                 VisioDiagram.startTable(pDataset.Name, pObjectClass.Fields.FieldCount, sAbstract)
